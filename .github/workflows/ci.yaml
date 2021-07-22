@@ -20,13 +20,13 @@ jobs:
     - run: docker-compose up -d
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
-    - run: docker-compose exec -T imap make black
+    - run: docker-compose exec -T imap invoke black
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
-    - run: docker-compose exec -T imap make flake8
+    - run: docker-compose exec -T imap invoke flake8
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}    
-    - run: docker-compose exec -T imap make isort
+    - run: docker-compose exec -T imap invoke isort
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
-    - run: docker-compose exec -T imap make mypy
+    - run: docker-compose exec -T imap invoke mypy
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
 
@@ -35,5 +35,5 @@ jobs:
       # chmod is needed to resolve above problem
     - run: chmod 777 .
       working-directory: applications/implicit_mapping
-    - run: docker-compose exec -T imap make test
+    - run: docker-compose exec -T imap invoke test
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
