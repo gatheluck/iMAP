@@ -20,8 +20,8 @@ jobs:
     - run: docker-compose up -d
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
-    - run: docker-compose exec -T poetry install --no-interaction
-      working-directory: applications/implicit_mapping
+    #- run: docker-compose exec -T poetry install --no-interaction
+    #  working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
     # pytest-cov export coverage data to a file
     # However, the directory made by actions/checkout does not allow write
