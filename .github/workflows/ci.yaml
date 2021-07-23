@@ -21,7 +21,7 @@ jobs:
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
     - run: |
-        docker-compose exec -T bash 
+        docker-compose exec -T imap bash 
         poetry install --no-interaction
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
