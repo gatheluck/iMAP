@@ -20,15 +20,14 @@ jobs:
     - run: docker-compose up -d
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
-    - run: |
-        docker-compose exec -T imap poetry install --no-interaction
-      working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
-
     # pytest-cov export coverage data to a file
     # However, the directory made by actions/checkout does not allow write
     # chmod is needed to resolve above problem
     - run: chmod 777 .
       working-directory: applications/implicit_mapping
+
+    - run: docker-compose exec -T imap poetry install --no-interaction
+      working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
     - run: docker-compose exec -T imap invoke black
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
