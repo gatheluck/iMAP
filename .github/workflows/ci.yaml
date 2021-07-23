@@ -29,14 +29,14 @@ jobs:
     - run: docker-compose exec -T imap poetry install --no-interaction
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
-    - run: docker-compose exec -T imap invoke black
+    - run: docker-compose exec -T imap make black
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
-    - run: docker-compose exec -T imap invoke flake8
+    - run: docker-compose exec -T imap make flake8
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}    
-    - run: docker-compose exec -T imap invoke isort
+    - run: docker-compose exec -T imap make isort
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
-    - run: docker-compose exec -T imap invoke mypy
+    - run: docker-compose exec -T imap make mypy
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
-    - run: docker-compose exec -T imap invoke test
+    - run: docker-compose exec -T imap make test
       working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
